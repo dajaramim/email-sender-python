@@ -1,6 +1,6 @@
 from email.message import EmailMessage # importamos desde message que está entro del objeto email a EmailMessage que nos permitirá estructurar un mensaje tipo email
-import ssl
-import smtplib
+import ssl #ssl permite que una transferencia de datos sea segura
+import smtplib #smtp es un protocolo de red para intercambiar correos electrónicos entre computadores y otros dispositivos
 email_sender = 'findanprogram@gmail.com'
 email_password = 'qccjgmppuofciyzu'
 
@@ -19,7 +19,7 @@ em['subject'] = subject
 em.set_content(body)
 
 context = ssl.create_default_context()
-#smtp es un protocolo de red para intercambiar correos electrónicos entre computadores y otros dispositivos
-with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp: #ssl permite que una transferencia de datos sea segura
+
+with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp: 
     smtp.login(email_sender, email_password)
     smtp.sendmail(email_sender, email_receiver, em.as_string())
